@@ -55,17 +55,13 @@ app.post('/backup', async function (req, res) {
         res.send('Yeni Database Kaydedilemedi!');
     }
 });
-// app.get('/upload', async (req, res) => {
-//     var r = await app.locals.bucket.upload(path.join(__dirname, 'database.sqlite'), {
-//         destination: `backup/${new Date().toISOString().
-//             replace(/T/, ' ').
-//             replace(/\..+/, '')}/database.sqlite`,
-//     })
-//     console.log(r);
-//     res.send('done');
-// })
 
-app.get('/getDB', function (req, res) {
+app.get('/getDB', async function (req, res) {
+    await app.locals.bucket.upload(path.join(__dirname, 'database.sqlite'), {
+        destination: `backup/${new Date().toISOString().
+            replace(/T/, ' ').
+            replace(/\..+/, '')}/database.sqlite`,
+    });
     const file = path.join(__dirname, 'database.sqlite');
     res.download(file); // Set disposition and send it.
 });
