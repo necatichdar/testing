@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- css style -->
+    <style>
+        .form_container {
+            width: 450px;
+            height: 100px;
+            display: inline-block;
+            margin: 20px 20px;
+            padding: 10px;
+
+        }
+
+        .form_container input[type='password'],
+        .form_container button {
+            padding: 8px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form_container">
+        <form id="myform" action="/backup" method="post">
+            <input type="password" name='name' id='id' ob placeholder='Password' />
+            <button type='submit'>Verify</button>
+        </form>
+    </div>
+</body>
+
+</html>
