@@ -28,7 +28,13 @@ const userRouter = require('./app/routes/user.routes');
 app.use('/api/advert', advertRouter)
 app.use('/api/user', userRouter)
 
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
+io.on('connection', () => {
+    console.log("sockete bağlandı");
+});
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
